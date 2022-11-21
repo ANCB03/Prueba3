@@ -1,15 +1,18 @@
 //Problema 1
+const prompt = require("prompt-sync")({ sigint: true });
 function problema1() {
-  const arr = new Array(5);
-  arr[0] = 1;
-  arr[1] = 2;
-  arr[2] = 3;
-  arr[3] = 4;
-  arr[4] = 5;
-  console.log(arr + "\n");
+  const arr = [];
+  let num = 0;
+  for(let i = 0;i < 5;i++){
+    num = parseInt(prompt("Ingrese el número que quieres ingresar al arreglo: "));
+    if(parseInt(num)){
+    arr.push(num);
+  }else{console.log("No es un número")}
+  }
+  console.log(arr);
 }
 console.log("Problema 1:")
-problema1();
+//problema1();
 //Problema 2
 function problema2() {
   let num = 1;
@@ -34,7 +37,6 @@ problema2();
   const pos = new Array();
   function problema3() {
     let buscar = obtenerNumero();
-
     for (let i = 0; i < arreglo.length; i++) {
       if (arreglo[i] == buscar) {
         pos.push(i);
@@ -62,17 +64,19 @@ problema2();
 //Problema 4
 const arr2 = [0, 10, 20, 11, 15, 16, 12, 9, 5, 18, 3];
 
+function promedio(arr){
+  let promedio =
+  arr.reduce(function (acumulador, siguienteValor) {
+    return acumulador + siguienteValor;
+  }, 0) / arr.length;
+  return promedio;
+}
+
 const aprobados = new Array();
 const desaprobados = new Array();
 arr2.map((x) => (x >= 12 ? aprobados.push(x) : desaprobados.push(x)));
-let promedioApro =
-  aprobados.reduce(function (acumulador, siguienteValor) {
-    return acumulador + siguienteValor;
-  }, 0) / aprobados.length;
-let promedioDesa =
-  desaprobados.reduce(function (acumulador, siguienteValor) {
-    return acumulador + siguienteValor;
-  }, 0) / desaprobados.length;
+let promedioApro = promedio(aprobados);
+let promedioDesa = promedio(desaprobados);
   console.log("Problema 4:")
 console.log("Notas: " + arr2);
 console.log(
@@ -94,10 +98,7 @@ console.log(
 const arr3 = [1, 34, 67, 8, 3, 4, 0, 67, 432, 6, 34, 21, 34, 8999, 21, 8, 9];
 let mayor = Math.max(...arr3);
 let menor = Math.min(...arr3);
-let media =
-  arr3.reduce(function (acumulador, siguienteValor) {
-    return acumulador + siguienteValor;
-  }, 0) / arr3.length;
+let media = promedio(arr3);
   console.log("Problema 5");
 console.log(
   "El arreglo es: " +
@@ -116,11 +117,14 @@ console.log(
 
 //Problema 6
 let cadena = "1234567";
-let arr4 = cadena.split("");
+let arr4 = cadena.split("").toString();
+let arr6 = [];
+arr6 = arr4.split(",");
 console.log("Problema 6:")
 console.log("Cadena: " + cadena);
 console.log("Arreglo: ");
 console.log(arr4);
+console.log(arr6);
 
 //Problema 7
 let arr5 = [1, 2, 3, 4, 5, 6];
@@ -153,7 +157,7 @@ function problema8(arr) {
 problema8(miarray);
 
 //Problema 9
-const prompt = require("prompt-sync")({ sigint: true });
+
 function Alumno(nombre, edad) {
   this.nombre = nombre;
   this.edad = edad;
@@ -162,12 +166,19 @@ function problema9() {
   const array = new Array();
   let name;
   let age;
-  while (true) {
+  /*while (true) {
     name = prompt("Ingrese el nombre del alumno: ");
     if (name == "*") break;
     age = prompt("Ingrese la edad del alumno: ");
     array.push(new Alumno(name, age));
+  } */
+  do {
+    name = prompt("Ingrese el nombre del alumno: ");
+    if (name != "*") {
+    age = prompt("Ingrese la edad del alumno: ");
+    array.push(new Alumno(name, age));
   }
+  } while (name != "*");
   const Adultos = new Array();
   array.map((x) => (x.edad >= 18 ? Adultos.push(x) : false));
   console.log("Mayores de edad: ");
@@ -182,7 +193,7 @@ function problema9() {
     console.log("Nombre: " + x.nombre + " " + "Edad: " + x.edad)
   );
 }
-//problema9(); Probar Problema 9 por consola con node
+problema9(); //Probar Problema 9 por consola con node
 //Problema 10
 function Problema10() {
   console.log("Problema 10:")
@@ -241,21 +252,19 @@ function Problema10() {
 Problema10();
 //Problema 11
 function Problema11(){
-  
   let tam = 0;
   tam = parseInt(prompt("Ingrese el tamaño del arreglo: "));
   let numero = 0;
   numero = parseInt(prompt("Ingrese el valor de la función: "));
-  let number = numero;
-  let i = 0;
-  let arr = Array.from({ length: tam }, () => i==0?(i++,numero):numero+=number);
+  const number = numero;
+  let arr = Array.from({ length: tam }, (x) => (numero+=number)-number); 
   //console.log(arr);
-  mostrarElementos(arr);
-  function mostrarElementos(arr){
-    let cad = "";
-    arr.map((x) => cad+=`${x} `);
-    
-    console.log("elementos del arreglo: " + cad)
-  }
+  mostrarElementosProblem11(arr);
 }
-//Problema11(); probar por consola con node
+function mostrarElementosProblem11(arr){
+  let cad = "";
+  arr.map((x) => cad+=`${x} `);
+  
+  console.log("elementos del arreglo: " + cad)
+}
+Problema11();
