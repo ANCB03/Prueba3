@@ -3,15 +3,19 @@ const prompt = require("prompt-sync")({ sigint: true });
 function problema1() {
   const arr = [];
   let num = 0;
-  for(let i = 0;i < 5;i++){
-    num = parseInt(prompt("Ingrese el número que quieres ingresar al arreglo: "));
-    if(parseInt(num)){
-    arr.push(num);
-  }else{console.log("No es un número")}
+  for (let i = 0; i < 5; i++) {
+    num = parseInt(
+      prompt("Ingrese el número que quieres ingresar al arreglo: ")
+    );
+    if (parseInt(num)) {
+      arr.push(num);
+    } else {
+      console.log("No es un número");
+    }
   }
   console.log(arr);
 }
-console.log("Problema 1:")
+console.log("Problema 1:");
 //problema1();
 //Problema 2
 function problema2() {
@@ -24,51 +28,50 @@ function problema2() {
     }, 0) / arr1.length;
   console.log("Media: " + mediaN + "\n");
 }
-console.log("Problema 2:")
+console.log("Problema 2:");
 problema2();
 
 //Problema 3
 
-  let arreglo = [10, 10, 3, 20, 5];
-  function obtenerNumero() {
-    var obtenerN = document.getElementById("numero").value;
-    return obtenerN;
-  }
-  const pos = new Array();
-  function problema3() {
-    let buscar = obtenerNumero();
-    for (let i = 0; i < arreglo.length; i++) {
-      if (arreglo[i] == buscar) {
-        pos.push(i);
-      }
+let arreglo = [10, 10, 3, 20, 5];
+function obtenerNumero() {
+  var obtenerN = document.getElementById("numero").value;
+  return obtenerN;
+}
+const pos = new Array();
+function problema3() {
+  let buscar = obtenerNumero();
+  for (let i = 0; i < arreglo.length; i++) {
+    if (arreglo[i] == buscar) {
+      pos.push(i);
     }
-    //console.log(pos);
-    imprimir();
   }
+  //console.log(pos);
+  imprimir();
+}
 
-  function imprimir() {
-    var lista = "";
-    for (var i = 0; i < pos.length; i++) {
-      lista +=
-        " posicion del elemento " +
-        obtenerNumero() +
-        " en el array: " +
-        pos[i] +
-        "\n";
-    }
-    document.getElementById("listado").innerText = lista;
+function imprimir() {
+  var lista = "";
+  for (var i = 0; i < pos.length; i++) {
+    lista +=
+      " posicion del elemento " +
+      obtenerNumero() +
+      " en el array: " +
+      pos[i] +
+      "\n";
   }
-  const arrFiltrado = arreglo.filter((num, index) => num % 2 == 0);
-
+  document.getElementById("listado").innerText = lista;
+}
+const arrFiltrado = arreglo.filter((num, index) => num % 2 == 0);
 
 //Problema 4
 const arr2 = [0, 10, 20, 11, 15, 16, 12, 9, 5, 18, 3];
 
-function promedio(arr){
+function promedio(arr) {
   let promedio =
-  arr.reduce(function (acumulador, siguienteValor) {
-    return acumulador + siguienteValor;
-  }, 0) / arr.length;
+    arr.reduce(function (acumulador, siguienteValor) {
+      return acumulador + siguienteValor;
+    }, 0) / arr.length;
   return promedio;
 }
 
@@ -77,7 +80,7 @@ const desaprobados = new Array();
 arr2.map((x) => (x >= 12 ? aprobados.push(x) : desaprobados.push(x)));
 let promedioApro = promedio(aprobados);
 let promedioDesa = promedio(desaprobados);
-  console.log("Problema 4:")
+console.log("Problema 4:");
 console.log("Notas: " + arr2);
 console.log(
   "Cantidad aprobados: " +
@@ -99,7 +102,7 @@ const arr3 = [1, 34, 67, 8, 3, 4, 0, 67, 432, 6, 34, 21, 34, 8999, 21, 8, 9];
 let mayor = Math.max(...arr3);
 let menor = Math.min(...arr3);
 let media = promedio(arr3);
-  console.log("Problema 5");
+console.log("Problema 5");
 console.log(
   "El arreglo es: " +
     arr3 +
@@ -120,7 +123,7 @@ let cadena = "1234567";
 let arr4 = cadena.split("").toString();
 let arr6 = [];
 arr6 = arr4.split(",");
-console.log("Problema 6:")
+console.log("Problema 6:");
 console.log("Cadena: " + cadena);
 console.log("Arreglo: ");
 console.log(arr4);
@@ -134,7 +137,9 @@ function problema7(arr5) {
   return arr;
 }
 console.log(
-  "\n" + "Problema 7:" + "\n" +
+  "\n" +
+    "Problema 7:" +
+    "\n" +
     "Arreglo recibido: " +
     arr5 +
     "\n" +
@@ -149,7 +154,7 @@ const miarray = Array.from({ length: 3 }, () =>
 //console.log(miarray);
 
 function problema8(arr) {
-  console.log("Problema 8:")
+  console.log("Problema 8:");
   console.log(arr);
   console.log(arr[(arr.length - 1) / 2]);
 }
@@ -175,9 +180,9 @@ function problema9() {
   do {
     name = prompt("Ingrese el nombre del alumno: ");
     if (name != "*") {
-    age = prompt("Ingrese la edad del alumno: ");
-    array.push(new Alumno(name, age));
-  }
+      age = prompt("Ingrese la edad del alumno: ");
+      array.push(new Alumno(name, age));
+    }
   } while (name != "*");
   const Adultos = new Array();
   array.map((x) => (x.edad >= 18 ? Adultos.push(x) : false));
@@ -196,8 +201,9 @@ function problema9() {
 problema9(); //Probar Problema 9 por consola con node
 //Problema 10
 function Problema10() {
-  console.log("Problema 10:")
-  const M = 5,N = 5;
+  console.log("Problema 10:");
+  const M = 5,
+    N = 5;
   const matriz = new Array(M);
   for (var i = 0; i < M; i++) {
     matriz[i] = new Array(N);
@@ -211,8 +217,8 @@ function Problema10() {
       sumFila = 0;
       for (var j = 0; j < matriz[i].length; j++) {
         matriz[i][j] = num;
-        cadFila+= `${matriz[i][j]} `;
-       
+        cadFila += `${matriz[i][j]} `;
+
         sumFila += num;
         num++;
       }
@@ -227,44 +233,43 @@ function Problema10() {
     console.log(cadFila);
   }
   let sumaTotalCol = 0;
-  function sumarColumnasEImprimir(matriz){
-      //console.log("______________ \n");
-      let cad = " ";
-      let sumaCol = 0;
-      for(let i = 0;i < matriz[0].length;i++){
-        sumaCol = 0;
-        for(let j = 0; j < matriz.length;j++){
-            sumaCol += matriz[j][i];
-        }
-        cad += `${sumaCol} `;
-        sumaTotalCol+=sumaCol;
+  function sumarColumnasEImprimir(matriz) {
+    //console.log("______________ \n");
+    let cad = " ";
+    let sumaCol = 0;
+    for (let i = 0; i < matriz[0].length; i++) {
+      sumaCol = 0;
+      for (let j = 0; j < matriz.length; j++) {
+        sumaCol += matriz[j][i];
       }
-      console.log(cad);
+      cad += `${sumaCol} `;
+      sumaTotalCol += sumaCol;
+    }
+    console.log(cad);
   }
   sumarFilasEImprimir(matriz);
   sumarColumnasEImprimir(matriz);
-  
-  
+
   console.log("Suma total filas: " + sumTotalFilas);
-  console.log("Suma total columnas: " + sumaTotalCol)
+  console.log("Suma total columnas: " + sumaTotalCol);
   //imprimir(matriz);
 }
 Problema10();
 //Problema 11
-function Problema11(){
+function Problema11() {
   let tam = 0;
   tam = parseInt(prompt("Ingrese el tamaño del arreglo: "));
   let numero = 0;
   numero = parseInt(prompt("Ingrese el valor de la función: "));
   const number = numero;
-  let arr = Array.from({ length: tam }, (x) => (numero+=number)-number); 
+  let arr = Array.from({ length: tam }, (x) => (numero += number) - number);
   //console.log(arr);
   mostrarElementosProblem11(arr);
 }
-function mostrarElementosProblem11(arr){
+function mostrarElementosProblem11(arr) {
   let cad = "";
-  arr.map((x) => cad+=`${x} `);
-  
-  console.log("elementos del arreglo: " + cad)
+  arr.map((x) => (cad += `${x} `));
+
+  console.log("elementos del arreglo: " + cad);
 }
 Problema11();
