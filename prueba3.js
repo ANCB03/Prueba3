@@ -22,10 +22,7 @@ function problema2() {
   let num = 1;
   let arr1 = Array.from({ length: 10 }, () => num++);
   console.log(arr1);
-  let mediaN =
-    arr1.reduce(function (acumulador, siguienteValor) {
-      return acumulador + siguienteValor;
-    }, 0) / arr1.length;
+  let mediaN = promedio(arr1);
   console.log("Media: " + mediaN + "\n");
 }
 console.log("Problema 2:");
